@@ -31,6 +31,9 @@
 		D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */; };
 		D56AAB221F395134002B581F /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
 		D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */; };
+		D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB21F39E7D1001DC3FF /* BagItems.swift */; };
+		D5B25DB51F39F321001DC3FF /* BagItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */; };
+		D5B25DB71F39FAE2001DC3FF /* BagItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */; };
 		D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersViewController.swift; path = Controllers/FiltersViewController.swift; sourceTree = "<group>"; };
 		D56AAB211F395134002B581F /* ShirtsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtsList.swift; path = "Data Sources/ShirtsList.swift"; sourceTree = "<group>"; };
 		D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesExtensions.swift; sourceTree = "<group>"; };
+		D5B25DB21F39E7D1001DC3FF /* BagItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItems.swift; path = "Data Sources/BagItems.swift"; sourceTree = "<group>"; };
+		D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagItemsDataSource.swift; sourceTree = "<group>"; };
+		D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItemsViewController.swift; path = Controllers/BagItemsViewController.swift; sourceTree = "<group>"; };
 		D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = Views/ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +174,7 @@
 				D56AAAE91F37FF7C002B581F /* MasterViewController.swift */,
 				D56AAAEB1F37FF7C002B581F /* DetailViewController.swift */,
 				D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */,
+				D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +184,8 @@
 			children = (
 				D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */,
 				D56AAB211F395134002B581F /* ShirtsList.swift */,
+				D5B25DB21F39E7D1001DC3FF /* BagItems.swift */,
+				D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */,
 			);
 			name = "Data Sources";
 			sourceTree = "<group>";
@@ -300,9 +309,12 @@
 				D56AAB0B1F380034002B581F /* Shirt.swift in Sources */,
 				D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */,
 				D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */,
+				D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */,
+				D5B25DB71F39FAE2001DC3FF /* BagItemsViewController.swift in Sources */,
 				D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */,
 				D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */,
 				D56AAAEC1F37FF7C002B581F /* DetailViewController.swift in Sources */,
+				D5B25DB51F39F321001DC3FF /* BagItemsDataSource.swift in Sources */,
 				D56AAAEA1F37FF7C002B581F /* MasterViewController.swift in Sources */,
 				D56AAB1E1F39395B002B581F /* FiltersDataSource.swift in Sources */,
 				D56AAB171F3869ED002B581F /* Codes.swift in Sources */,

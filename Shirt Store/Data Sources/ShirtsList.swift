@@ -68,6 +68,8 @@ class ShirtsList {
                     print("Parsing error: \(error!)")
                 }
                 
+                BagItems.restoreItems()
+                
                 success()
             })
             

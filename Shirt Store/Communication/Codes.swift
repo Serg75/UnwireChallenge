@@ -13,6 +13,17 @@ enum ResponseStatus: Int {
     case OK = 200
     case BadRequest = 400
     case InternalServerError = 500
+    
+    var description: String {
+        switch self {
+        case .OK:
+            return "OK"
+        case .BadRequest:
+            return "Bad Request"
+        case .InternalServerError:
+            return "Internal Server Error"
+        }
+    }
 }
 
 enum ParsingError: Error {

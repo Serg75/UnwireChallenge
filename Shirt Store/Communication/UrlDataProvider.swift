@@ -12,7 +12,7 @@ import UIKit
 /// Class for getting/sending data from/to the default resources.
 class UrlDataProvider: DataProvider {
     
-    let url = URL(string: "https://mock-shirt-backend.getsandbox.com/shirts")!
+    let baseUrlString = "https://mock-shirt-backend.getsandbox.com"
     
     var imageCache = [String: UIImage]()
     
@@ -21,6 +21,8 @@ class UrlDataProvider: DataProvider {
     ///
     /// - Parameter completion: The completion handler to call when the image loading is complete.
     func loadData(completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
+        
+        let url = URL(string: baseUrlString + "/shirts")!
         
         let loadDataTask = URLSession.shared.dataTask(with: url) { (data, response, innerError) in
             
@@ -74,5 +76,67 @@ class UrlDataProvider: DataProvider {
                 }
             }
         }
+    }
+    
+    
+    /// Sends order to the server.
+    ///
+    /// - Parameters:
+    ///   - orderData:  Formatted data for order.
+    ///   - completion: The completion handler to call when the image loading is complete.
+    func sendOrder(orderData: [String: Any], completion: @escaping (_ error: Error?) -> Void) {
+        
+        let url = URL(string: baseUrlString + "/order")!
+        
+        var json: Data!
+        do {
+            json = try JSONSerialization.data(withJSONObject: orderData, options: [])
+        } catch {
+            print(error)
+            completion(error)
+            return
+        }
+        
+        let request = NSMutableURLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = json
+
+        let orderTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, innerError) in
+
+            if let _ = innerError {
+                
+                completion(innerError)
+                
+            } else if let response = response as? HTTPURLResponse {
+                
+                if response.statusCode == ResponseStatus.OK.rawValue {
+                    
+                    completion(nil)
+                    
+                } else {
+                    
+                    var statusDescription = "Transaction failed."
+                    if let status = ResponseStatus(rawValue: response.statusCode) {
+                        statusDescription += " (\(status.description))"
+                    }
+                    
+                    var jsonData: Any
+                    if data != nil {
+                        do {
+                            jsonData = try JSONSerialization.jsonObject(with: data!)
+                            statusDescription += "\n\(((jsonData as? [String: Any])?["error"] as? [String: Any])!["message"]!)"
+                        } catch { }
+                    }
+                    
+                    let statusError = NSError(domain: "com.unwire",
+                                              code: response.statusCode,
+                                              userInfo: [NSLocalizedDescriptionKey: statusDescription])
+                    completion(statusError)
+                }
+            }
+        }
+        orderTask.resume()
+
     }
 }

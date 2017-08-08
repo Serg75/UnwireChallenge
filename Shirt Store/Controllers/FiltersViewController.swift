@@ -19,7 +19,6 @@ class FiltersViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         tableView.dataSource = tableViewDataSource
         
         updateShowResultButton()

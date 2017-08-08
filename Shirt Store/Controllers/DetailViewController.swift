@@ -9,7 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    private var isItemInBag = false
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var colourLabel: UILabel!
@@ -26,7 +28,7 @@ class DetailViewController: UIViewController {
             if let label = self.colourLabel { label.text = shirt.colour }
             if let label = self.sizeLabel { label.text = "size \(shirt.size)" }
             if let label = self.priceLabel { label.text = "€\(shirt.price.description)" }
-            if let label = self.quantityLabel { label.text = shirt.quantity.formattedQuantity }
+            if let label = self.quantityLabel { label.text = shirt.quantity.formattedQuantity(markSoldedOut: true) }
             
             if (self.imageView) != nil {
                 DataManager.getImageFrom(link: shirt.picture) { image in
@@ -44,6 +46,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        self.configureAddToBagButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +61,22 @@ class DetailViewController: UIViewController {
         }
     }
 
+    private func configureAddToBagButton() {
+        isItemInBag = BagItems.isItemInBag(detailItem!)
+        if !isItemInBag {
+            addToBagButton.setTitle("Add to Bag", for: UIControlState.normal)
+        } else {
+            addToBagButton.setTitle("Remove from Bag", for: UIControlState.normal)
+        }
+    }
     
     @IBAction func addToBag(_ sender: Any) {
+        if !isItemInBag {
+            BagItems.addToBag(item: detailItem!)
+        } else {
+            BagItems.removeFromBag(item: detailItem!)
+        }
+        configureAddToBagButton()
     }
 }
 

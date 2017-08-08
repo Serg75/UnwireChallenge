@@ -9,11 +9,13 @@
 import Foundation
 
 extension Int {
-    var formattedQuantity: String {
+    func formattedQuantity(markSoldedOut: Bool = false) -> String {
         switch self {
         case 0:
-            return "This item is sold out."
-        case 1..<Int.max:
+            return markSoldedOut ? "This item is sold out." : "no items"
+        case 1:
+            return "1 item"
+        case 2..<Int.max:
             return "\(self) items"
         default:
             return ""

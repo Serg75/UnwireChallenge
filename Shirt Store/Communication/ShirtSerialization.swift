@@ -62,6 +62,20 @@ extension Shirt {
             self.quantity = 0
         }
     }
+    
+    /// Generates json object from the 'Shirt' structure.
+    var json: [String: Any] {
+        let json: [String: Any] = [
+            "id": id,
+            "name": name,
+            "price": price,
+            "colour": colour,
+            "size": size.string,
+            "picture": picture,
+            "quantity": quantity
+        ]
+        return json
+    }
 
     
     /// Initializer for list of Shirts

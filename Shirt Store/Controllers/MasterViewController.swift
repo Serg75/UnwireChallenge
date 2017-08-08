@@ -20,24 +20,28 @@ class MasterViewController: UITableViewController {
     @IBOutlet weak var filterIcon: UIImageView!
     @IBOutlet weak var itemsCountLabel: UILabel!
 
+    @IBOutlet weak var bagItemsCountLabel: UILabel!
+
     var detailViewController: DetailViewController? = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let updateButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(populateItems(_:)))
-        self.navigationItem.rightBarButtonItem = updateButton
-        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        populateItems(self)
+        updateBag()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        
+        updateBag()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +57,7 @@ class MasterViewController: UITableViewController {
                 if ShirtsList.hasShirts {
                     self.filterButton.isEnabled = true
                     self.filterIcon.alpha = 1
+                    self.updateBag()
                 }
             }
         }) {
@@ -69,7 +74,11 @@ class MasterViewController: UITableViewController {
         let filtersCount = ShirtsList.selectedFiltersCount
         filterLabel.text = filtersCount > 0 ? "(\(filtersCount))" : ""
         itemsCountLabel.text = "\(ShirtsList.shirts.count) items"
-        
+    }
+    
+    func updateBag() {
+        let bagItemsCount = BagItems.items.count
+        bagItemsCountLabel.text = bagItemsCount > 0 ? "\(bagItemsCount)" : ""
     }
 
     // MARK: - Segues
@@ -88,6 +97,7 @@ class MasterViewController: UITableViewController {
     
     @IBAction func unwind(segue:UIStoryboardSegue) {
         updateShirts()
+        updateBag()
     }
 
     // MARK: - Table View
@@ -104,7 +114,8 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let shirt = ShirtsList.shirts[indexPath.row]
-        (cell as! ItemTableViewCell).setupSell(shirt: shirt)
+        let inBag = BagItems.isItemInBag(shirt)
+        (cell as! ItemTableViewCell).setupSell(shirt: shirt, isInBag: inBag)
         return cell
     }
 

@@ -16,17 +16,27 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var bagIcon: UIImageView!
     
     
-    func setupSell(shirt: Shirt) {
+    /// Updates outlets by values.
+    ///
+    /// - Parameters:
+    ///   - shirt:   'Shirt' structure with values.
+    ///   - isInBag: Specifies whether this item in the bag.
+    func setupSell(shirt: Shirt, isInBag: Bool = false) {
         nameLabel.text = shirt.name
         colourLabel.text = shirt.colour
         sizeLabel.text = "size \(shirt.size)"
         priceLabel.text = "€\(shirt.price.description)"
-        quantityLabel.text = shirt.quantity.formattedQuantity
+        quantityLabel.text = shirt.quantity.formattedQuantity(markSoldedOut: true)
         
         DataManager.getImageFrom(link: shirt.picture) { image in
             self.thumbView.image = image
+        }
+
+        if let bagIcon = self.bagIcon {
+            bagIcon.isHidden = !isInBag
         }
     }
 }
