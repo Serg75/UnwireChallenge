@@ -53,16 +53,18 @@ class BagItemsViewController: UIViewController {
                                                     message: "Thank you for choosing our store!",
                                                     preferredStyle: UIAlertControllerStyle.alert)
             
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: { () in
-
+            let okAction = UIAlertAction(title: "OK",
+                                         style: UIAlertActionStyle.default,
+                                         handler: { _ in
                 BagItems.clear()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "unwindFromBagSegue", sender: self)
                 }
             })
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
 
         }) { error in
             

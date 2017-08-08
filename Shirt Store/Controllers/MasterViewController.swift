@@ -33,7 +33,7 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        populateItems(self)
+        populateItems()
         updateBag()
     }
 
@@ -41,6 +41,7 @@ class MasterViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
         
+        tableView.reloadData()
         updateBag()
     }
 
@@ -49,7 +50,7 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func populateItems(_ sender: Any) {
+    func populateItems() {
         
         ShirtsList.loadShirts(success: { 
             DispatchQueue.main.async {
@@ -63,7 +64,14 @@ class MasterViewController: UITableViewController {
         }) {
             let alertController = UIAlertController(title: "Error", message: "Server doesn't response", preferredStyle: UIAlertControllerStyle.alert)
             
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            let okAction = UIAlertAction(title: "Repeat",
+                                         style: UIAlertActionStyle.default,
+                                         handler: { _ in
+                
+                    self.perform(#selector(MasterViewController.populateItems),
+                                 with: nil,
+                                 afterDelay: TimeInterval(1))
+            })
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         }
