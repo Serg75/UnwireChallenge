@@ -15,10 +15,27 @@ class ShirtsList {
 
     static private var shirtsData = [Shirt]()
     
+    static var filterSizes = Set<Shirt.Size>()
+    static var filterColours = Set<String>()
+    
+    static var selectedFiltersCount: Int {
+        return filterSizes.count + filterColours.count
+    }
+    
+    static var hasShirts: Bool {
+        return shirtsData.count > 0
+    }
     
     /// Shirts list data from the server
     static var shirts: [Shirt] {
-        return shirtsData
+        var filteredData = shirtsData
+        if filterSizes.count > 0 {
+            filteredData = filteredData.filter { filterSizes.contains($0.size) }
+        }
+        if filterColours.count > 0 {
+            filteredData = filteredData.filter { filterColours.contains($0.colour) }
+        }
+        return filteredData
     }
     
     
@@ -58,18 +75,17 @@ class ShirtsList {
             print(error)
             fail()
         })
-
     }
     
     
     /// Available shirt sizes in the store
     static var sizes: [Shirt.Size] {
-        return Array(Set(shirtsData.map { $0.size }))
+        return Array(Set(shirtsData.map { $0.size })).sorted()
     }
 
     
     /// Available shirt colours in the store
     static var colours: [String] {
-        return Array(Set(shirtsData.map { $0.colour }))
+        return Array(Set(shirtsData.map { $0.colour })).sorted()
     }
 }

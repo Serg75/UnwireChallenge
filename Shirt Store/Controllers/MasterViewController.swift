@@ -10,6 +10,16 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    enum SortSelection: Int {
+        case size
+        case colour
+    }
+
+    @IBOutlet weak var filterLabel: UILabel!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterIcon: UIImageView!
+    @IBOutlet weak var itemsCountLabel: UILabel!
+
     var detailViewController: DetailViewController? = nil
     
     
@@ -39,11 +49,27 @@ class MasterViewController: UITableViewController {
         
         ShirtsList.loadShirts(success: { 
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.updateShirts()
+                if ShirtsList.hasShirts {
+                    self.filterButton.isEnabled = true
+                    self.filterIcon.alpha = 1
+                }
             }
         }) {
-            // TODO: show alert here
+            let alertController = UIAlertController(title: "Error", message: "Server doesn't response", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func updateShirts() {
+        tableView.reloadData()
+        let filtersCount = ShirtsList.selectedFiltersCount
+        filterLabel.text = filtersCount > 0 ? "(\(filtersCount))" : ""
+        itemsCountLabel.text = "\(ShirtsList.shirts.count) items"
+        
     }
 
     // MARK: - Segues
@@ -58,6 +84,10 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
+    }
+    
+    @IBAction func unwind(segue:UIStoryboardSegue) {
+        updateShirts()
     }
 
     // MARK: - Table View
