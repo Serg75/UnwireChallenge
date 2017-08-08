@@ -10,7 +10,6 @@ import Foundation
 
 extension String {
     
-    
     /// A Boolean value indicating whether a first character is uppercase.
     func isFirstCharacterUppercase() -> Bool {
         if let char = self.unicodeScalars.first {

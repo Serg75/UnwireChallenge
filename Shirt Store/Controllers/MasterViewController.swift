@@ -104,7 +104,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let shirt = ShirtsList.shirts[indexPath.row]
-        cell.textLabel!.text = shirt.description
+        (cell as! ItemTableViewCell).setupSell(shirt: shirt)
         return cell
     }
 

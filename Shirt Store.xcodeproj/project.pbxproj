@@ -30,6 +30,8 @@
 		D56AAB1E1F39395B002B581F /* FiltersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */; };
 		D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */; };
 		D56AAB221F395134002B581F /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
+		D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */; };
+		D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +60,14 @@
 		D56AAB001F37FF7C002B581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56AAB0A1F380034002B581F /* Shirt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shirt.swift; path = Models/Shirt.swift; sourceTree = "<group>"; };
 		D56AAB0E1F381C35002B581F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Communication/DataManager.swift; sourceTree = "<group>"; };
-		D56AAB121F3850BF002B581F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extension/StringExtensions.swift; sourceTree = "<group>"; };
+		D56AAB121F3850BF002B581F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		D56AAB161F3869ED002B581F /* Codes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Codes.swift; path = Communication/Codes.swift; sourceTree = "<group>"; };
 		D56AAB191F386A88002B581F /* ShirtSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtSerialization.swift; path = Communication/ShirtSerialization.swift; sourceTree = "<group>"; };
 		D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersDataSource.swift; path = "Data Sources/FiltersDataSource.swift"; sourceTree = "<group>"; };
 		D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersViewController.swift; path = Controllers/FiltersViewController.swift; sourceTree = "<group>"; };
 		D56AAB211F395134002B581F /* ShirtsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtsList.swift; path = "Data Sources/ShirtsList.swift"; sourceTree = "<group>"; };
+		D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesExtensions.swift; sourceTree = "<group>"; };
+		D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = Views/ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				D56AAB091F37FFDF002B581F /* Models */,
+				D5F4CB711F39CDEC001EC1F6 /* Views */,
 				D56AAB151F3866A3002B581F /* Controllers */,
 				D56AAB1C1F3938AA002B581F /* Data Sources */,
 				D56AAB0D1F381BCF002B581F /* Communication */,
-				D56AAB111F385090002B581F /* Extension */,
+				D56AAB111F385090002B581F /* Extensions */,
 				D52B85C51F39A12D0087664C /* Res */,
 				D56AAAE71F37FF7C002B581F /* AppDelegate.swift */,
 				D56AAAED1F37FF7C002B581F /* Main.storyboard */,
@@ -148,12 +153,13 @@
 			name = Communication;
 			sourceTree = "<group>";
 		};
-		D56AAB111F385090002B581F /* Extension */ = {
+		D56AAB111F385090002B581F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D56AAB121F3850BF002B581F /* StringExtensions.swift */,
+				D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */,
 			);
-			name = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D56AAB151F3866A3002B581F /* Controllers */ = {
@@ -173,6 +179,14 @@
 				D56AAB211F395134002B581F /* ShirtsList.swift */,
 			);
 			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		D5F4CB711F39CDEC001EC1F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +299,9 @@
 				D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */,
 				D56AAB0B1F380034002B581F /* Shirt.swift in Sources */,
 				D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */,
+				D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */,
 				D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */,
+				D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */,
 				D56AAAEC1F37FF7C002B581F /* DetailViewController.swift in Sources */,
 				D56AAAEA1F37FF7C002B581F /* MasterViewController.swift in Sources */,
 				D56AAB1E1F39395B002B581F /* FiltersDataSource.swift in Sources */,

@@ -71,7 +71,7 @@ class ShirtsList {
                 success()
             })
             
-        }, error: { (error) -> Void in
+        }, fail: { (error) -> Void in
             print(error)
             fail()
         })

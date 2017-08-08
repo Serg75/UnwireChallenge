@@ -6,13 +6,20 @@
 //  Copyright © 2017 Unwire. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
+/// Class for getting/sending data from/to the default resources.
 class UrlDataProvider: DataProvider {
     
     let url = URL(string: "https://mock-shirt-backend.getsandbox.com/shirts")!
+    
+    var imageCache = [String: UIImage]()
+    
 
+    /// Loads shirts list from the server.
+    ///
+    /// - Parameter completion: The completion handler to call when the image loading is complete.
     func loadData(completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         
         let loadDataTask = URLSession.shared.dataTask(with: url) { (data, response, innerError) in
@@ -42,5 +49,30 @@ class UrlDataProvider: DataProvider {
             }
         }
         loadDataTask.resume()
+    }
+    
+    
+    /// Retrieves an image from specified internet resource.
+    ///
+    /// - Parameters:
+    ///   - link:       Link to the image.
+    ///   - completion: The completion handler to call when the image loading is complete.
+    func loadImageFrom(link: String, completion: @escaping (_ image: UIImage?) -> Void) {
+        
+        if let cachedImage = imageCache[link] {
+            completion(cachedImage)
+            return
+        }
+        
+        if let url = URL(string: link) {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url)
+                self.imageCache[link] = UIImage(data: data!)
+                
+                DispatchQueue.main.async {
+                    completion(self.imageCache[link])
+                }
+            }
+        }
     }
 }

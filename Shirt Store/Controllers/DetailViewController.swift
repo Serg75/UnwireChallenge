@@ -10,14 +10,32 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var colourLabel: UILabel!
+    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var addToBagButton: UIButton!
 
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+        if let shirt = self.detailItem {
+            if let label = self.nameLabel { label.text = shirt.name }
+            if let label = self.colourLabel { label.text = shirt.colour }
+            if let label = self.sizeLabel { label.text = "size \(shirt.size)" }
+            if let label = self.priceLabel { label.text = "€\(shirt.price.description)" }
+            if let label = self.quantityLabel { label.text = shirt.quantity.formattedQuantity }
+            
+            if (self.imageView) != nil {
+                DataManager.getImageFrom(link: shirt.picture) { image in
+                    self.imageView.image = image
+                }
+            }
+            
+            if let button = self.addToBagButton, shirt.quantity < 1 {
+                button.isHidden = true
             }
         }
     }
@@ -40,6 +58,8 @@ class DetailViewController: UIViewController {
         }
     }
 
-
+    
+    @IBAction func addToBag(_ sender: Any) {
+    }
 }
 
