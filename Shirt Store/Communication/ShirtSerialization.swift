@@ -41,7 +41,7 @@ extension Shirt {
         }
         
         guard let sizeString = json["size"] as? String,
-            let size = Size(rawValue: sizeString.uppercased()) else {
+            let size = Size(string: sizeString) else {
                 throw ParsingError.missing("size for item \(id)")
         }
         
