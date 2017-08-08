@@ -12,9 +12,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     
-    var shirts = [Shirt]()
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,35 +37,13 @@ class MasterViewController: UITableViewController {
 
     func populateItems(_ sender: Any) {
         
-        DataManager.getShirtsWithSuccess(success: { (data) -> Void in
-            var json: Any
-            do {
-                json = try JSONSerialization.jsonObject(with: data)
-            } catch {
-                print(error)
-                return
+        ShirtsList.loadShirts(success: { 
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-            
-            guard let items = json as? [Any] else {
-                print("Error: json data is not an array")
-                return
-            }
-            
-            Shirt.shirts(json: items, completion: { (shirts, error) in
-                self.shirts = shirts
-                
-                if error != nil {
-                    print("Parsing error: \(error!)")
-                }
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
-
-        }, error: { (error) -> Void in
-            print(error)
-        })
+        }) {
+            // TODO: show alert here
+        }
     }
 
     // MARK: - Segues
@@ -75,7 +51,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let shirt = shirts[indexPath.row]
+                let shirt = ShirtsList.shirts[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = shirt
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
@@ -91,13 +67,13 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shirts.count
+        return ShirtsList.shirts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let shirt = shirts[indexPath.row]
+        let shirt = ShirtsList.shirts[indexPath.row]
         cell.textLabel!.text = shirt.description
         return cell
     }

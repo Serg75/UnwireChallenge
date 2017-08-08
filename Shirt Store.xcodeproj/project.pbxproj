@@ -24,6 +24,7 @@
 		D56AAB181F3869ED002B581F /* Codes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB161F3869ED002B581F /* Codes.swift */; };
 		D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB191F386A88002B581F /* ShirtSerialization.swift */; };
 		D56AAB1B1F386A88002B581F /* ShirtSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB191F386A88002B581F /* ShirtSerialization.swift */; };
+		D56AAB221F395134002B581F /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D56AAB121F3850BF002B581F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extension/StringExtensions.swift; sourceTree = "<group>"; };
 		D56AAB161F3869ED002B581F /* Codes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Codes.swift; path = Communication/Codes.swift; sourceTree = "<group>"; };
 		D56AAB191F386A88002B581F /* ShirtSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtSerialization.swift; path = Communication/ShirtSerialization.swift; sourceTree = "<group>"; };
+		D56AAB211F395134002B581F /* ShirtsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtsList.swift; path = "Data Sources/ShirtsList.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				D56AAB091F37FFDF002B581F /* Models */,
 				D56AAB151F3866A3002B581F /* Controllers */,
+				D56AAB1C1F3938AA002B581F /* Data Sources */,
 				D56AAB0D1F381BCF002B581F /* Communication */,
 				D56AAB111F385090002B581F /* Extension */,
 				D56AAAE71F37FF7C002B581F /* AppDelegate.swift */,
@@ -149,6 +152,14 @@
 				D56AAAEB1F37FF7C002B581F /* DetailViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D56AAB1C1F3938AA002B581F /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D56AAB211F395134002B581F /* ShirtsList.swift */,
+			);
+			name = "Data Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56AAB131F3850BF002B581F /* StringExtensions.swift in Sources */,
+				D56AAB221F395134002B581F /* ShirtsList.swift in Sources */,
 				D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */,
 				D56AAB0B1F380034002B581F /* Shirt.swift in Sources */,
 				D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */,
