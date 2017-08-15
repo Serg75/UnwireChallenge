@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D52B85C61F39A12D0087664C /* Res in Resources */ = {isa = PBXBuildFile; fileRef = D52B85C51F39A12D0087664C /* Res */; };
-		D52B85C71F39A12D0087664C /* Res in Resources */ = {isa = PBXBuildFile; fileRef = D52B85C51F39A12D0087664C /* Res */; };
 		D52B85C91F39B1280087664C /* UrlDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B85C81F39B1280087664C /* UrlDataProvider.swift */; };
 		D56AAAE81F37FF7C002B581F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAE71F37FF7C002B581F /* AppDelegate.swift */; };
 		D56AAAEA1F37FF7C002B581F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAE91F37FF7C002B581F /* MasterViewController.swift */; };
@@ -48,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D52B85C51F39A12D0087664C /* Res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Res; sourceTree = "<group>"; };
 		D52B85C81F39B1280087664C /* UrlDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlDataProvider.swift; path = Communication/UrlDataProvider.swift; sourceTree = "<group>"; };
 		D56AAAE41F37FF7C002B581F /* Shirt Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shirt Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56AAAE71F37FF7C002B581F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +118,6 @@
 				D56AAB1C1F3938AA002B581F /* Data Sources */,
 				D56AAB0D1F381BCF002B581F /* Communication */,
 				D56AAB111F385090002B581F /* Extensions */,
-				D52B85C51F39A12D0087664C /* Res */,
 				D56AAAE71F37FF7C002B581F /* AppDelegate.swift */,
 				D56AAAED1F37FF7C002B581F /* Main.storyboard */,
 				D56AAAF01F37FF7C002B581F /* Assets.xcassets */,
@@ -281,7 +277,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D52B85C61F39A12D0087664C /* Res in Resources */,
 				D56AAAF41F37FF7C002B581F /* LaunchScreen.storyboard in Resources */,
 				D56AAAF11F37FF7C002B581F /* Assets.xcassets in Resources */,
 				D56AAAEF1F37FF7C002B581F /* Main.storyboard in Resources */,
@@ -292,7 +287,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D52B85C71F39A12D0087664C /* Res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,6 +31,11 @@ class MasterViewController: UITableViewController {
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            
+            // Show master and details view controllers side-by-side for iPad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                split.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+            }
         }
         
         populateItems()

@@ -23,22 +23,29 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let shirt = self.detailItem {
-            if let label = self.nameLabel { label.text = shirt.name }
-            if let label = self.colourLabel { label.text = shirt.colour }
-            if let label = self.sizeLabel { label.text = "size \(shirt.size)" }
-            if let label = self.priceLabel { label.text = "€\(shirt.price.description)" }
-            if let label = self.quantityLabel { label.text = shirt.quantity.formattedQuantity(markSoldedOut: true) }
+        if let item = self.detailItem {
+            if let label = self.nameLabel { label.text = item.name }
+            if let label = self.colourLabel { label.text = item.colour }
+            if let label = self.sizeLabel { label.text = "size \(item.size)" }
+            if let label = self.priceLabel { label.text = "€\(item.price.description)" }
+            if let label = self.quantityLabel { label.text = item.quantity.formattedQuantity(markSoldedOut: true) }
             
             if (self.imageView) != nil {
-                DataManager.getImageFrom(link: shirt.picture) { image in
+                DataManager.getImageFrom(link: item.picture) { image in
                     self.imageView.image = image
                 }
             }
             
-            if let button = self.addToBagButton, shirt.quantity < 1 {
+            if let button = self.addToBagButton, item.quantity < 1 {
                 button.isHidden = true
             }
+        } else {
+            if let label = self.nameLabel { label.text = "" }
+            if let label = self.colourLabel { label.text = "" }
+            if let label = self.sizeLabel { label.text = "" }
+            if let label = self.priceLabel { label.text = "" }
+            if let label = self.quantityLabel { label.text = "" }
+            if let button = self.addToBagButton { button.isHidden = true }
         }
     }
 
@@ -62,21 +69,25 @@ class DetailViewController: UIViewController {
     }
 
     private func configureAddToBagButton() {
-        isItemInBag = BagItems.isItemInBag(detailItem!)
-        if !isItemInBag {
-            addToBagButton.setTitle("Add to Bag", for: UIControlState.normal)
-        } else {
-            addToBagButton.setTitle("Remove from Bag", for: UIControlState.normal)
+        if let item = self.detailItem {
+            isItemInBag = BagItems.isItemInBag(item)
+            if !isItemInBag {
+                addToBagButton.setTitle("Add to Bag", for: UIControlState.normal)
+            } else {
+                addToBagButton.setTitle("Remove from Bag", for: UIControlState.normal)
+            }
         }
     }
     
     @IBAction func addToBag(_ sender: Any) {
-        if !isItemInBag {
-            BagItems.addToBag(item: detailItem!)
-        } else {
-            BagItems.removeFromBag(item: detailItem!)
+        if let item = self.detailItem {
+            if !isItemInBag {
+                BagItems.addToBag(item: item)
+            } else {
+                BagItems.removeFromBag(item: item)
+            }
+            configureAddToBagButton()
         }
-        configureAddToBagButton()
     }
 }
 
