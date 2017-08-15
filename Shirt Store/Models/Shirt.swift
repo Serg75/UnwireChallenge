@@ -49,11 +49,25 @@ struct Shirt {
     let name: String
     let price: Int64
     let colour: String
-    let quantity: Int
+    var quantity: Int
     let size: Size
     let picture: String
     
     var description: String {
         return "\(name), \(colour) \(size), €\(price): \(quantity) items"
+    }
+    
+    
+    /// Changes quantity by number. Quantity cannot be less than 1.
+    ///
+    /// - Parameter amount: The number for change quantity.
+    /// - Returns:          Returns true if the quantity was changed.
+    mutating func changeQuantityBy(_ amount: Int) -> Bool {
+        let newValue = quantity + amount
+        if newValue > 0 {
+            quantity = newValue
+            return true
+        }
+        return false
     }
 }

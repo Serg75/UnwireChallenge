@@ -23,7 +23,26 @@ class BagItemsViewController: UIViewController {
 
         tableView.dataSource = tableViewDataSource
         configureView()
+        
+        NotificationCenter.default.addObserver(forName: bagItemsNotification,
+                                               object: nil,
+                                               queue: nil) { (notification) in
+            
+            if notification.object == nil {
+                // update cell deleting with animation
+                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
+            } else {
+                // update quantity changing without animation
+                self.tableView.reloadData()
+            }
+            self.configureView()
+        }
     }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 
 
     // MARK: -
@@ -35,7 +54,7 @@ class BagItemsViewController: UIViewController {
     }
     
     private func configureView() {
-        let itemsCount = BagItems.items.count
+        let itemsCount = BagItems.itemsCount
         var string = itemsCount.formattedQuantity()
         if itemsCount > 0 {
             string += ", €\(BagItems.itemsPrice)"

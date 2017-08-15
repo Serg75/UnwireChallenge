@@ -40,15 +40,20 @@ class MasterViewController: UITableViewController {
         
         populateItems()
         updateBag()
+        
+        NotificationCenter.default.addObserver(forName: bagItemsNotification,
+                                               object: nil,
+                                               queue: nil) { (notification) in
+                 
+            self.tableView.reloadData()
+            self.updateBag()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-        updateBag()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,11 +91,11 @@ class MasterViewController: UITableViewController {
         tableView.reloadData()
         let filtersCount = ShirtsList.selectedFiltersCount
         filterLabel.text = filtersCount > 0 ? "(\(filtersCount))" : ""
-        itemsCountLabel.text = "\(ShirtsList.shirts.count) items"
+        itemsCountLabel.text = "\(ShirtsList.shirts.count) lots"
     }
     
     func updateBag() {
-        let bagItemsCount = BagItems.items.count
+        let bagItemsCount = BagItems.itemsCount
         bagItemsCountLabel.text = bagItemsCount > 0 ? "\(bagItemsCount)" : ""
     }
 

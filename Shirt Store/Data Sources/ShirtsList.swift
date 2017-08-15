@@ -90,4 +90,16 @@ class ShirtsList {
     static var colours: [String] {
         return Array(Set(shirtsData.map { $0.colour })).sorted()
     }
+    
+    
+    /// Available shirts's quantity in the store.
+    ///
+    /// - Parameter shirt:  Shirt which quantity we need to find.
+    /// - Returns:          The quantity of the shirt in the store.
+    static func quantityForShirt(_ shirt: Shirt) -> Int {
+        if let item = shirtsData.first(where: { $0.id == shirt.id }) {
+            return item.quantity
+        }
+        return 0
+    }
 }

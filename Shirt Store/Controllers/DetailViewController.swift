@@ -80,8 +80,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addToBag(_ sender: Any) {
-        if let item = self.detailItem {
+        if var item = self.detailItem {
             if !isItemInBag {
+                // We add item with quantity = 1
+                item.quantity = 1
                 BagItems.addToBag(item: item)
             } else {
                 BagItems.removeFromBag(item: item)
