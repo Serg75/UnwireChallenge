@@ -14,7 +14,7 @@
 		D56AAAEF1F37FF7C002B581F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56AAAED1F37FF7C002B581F /* Main.storyboard */; };
 		D56AAAF11F37FF7C002B581F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D56AAAF01F37FF7C002B581F /* Assets.xcassets */; };
 		D56AAAF41F37FF7C002B581F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56AAAF21F37FF7C002B581F /* LaunchScreen.storyboard */; };
-		D56AAAFF1F37FF7C002B581F /* Shirt_StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAFE1F37FF7C002B581F /* Shirt_StoreTests.swift */; };
+		D56AAAFF1F37FF7C002B581F /* ShirtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */; };
 		D56AAB0B1F380034002B581F /* Shirt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0A1F380034002B581F /* Shirt.swift */; };
 		D56AAB0C1F380034002B581F /* Shirt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0A1F380034002B581F /* Shirt.swift */; };
 		D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0E1F381C35002B581F /* DataManager.swift */; };
@@ -32,6 +32,15 @@
 		D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB21F39E7D1001DC3FF /* BagItems.swift */; };
 		D5B25DB51F39F321001DC3FF /* BagItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */; };
 		D5B25DB71F39FAE2001DC3FF /* BagItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */; };
+		D5F008AB1F43169200456596 /* UrlDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B85C81F39B1280087664C /* UrlDataProvider.swift */; };
+		D5F008AD1F431BA300456596 /* ShirtsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008AC1F431BA300456596 /* ShirtsListTests.swift */; };
+		D5F008AF1F431C2000456596 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008AE1F431C2000456596 /* DataManagerTests.swift */; };
+		D5F008B11F431C8E00456596 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008B01F431C8E00456596 /* MockDataProvider.swift */; };
+		D5F008B31F431DF200456596 /* shirts.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F008B21F431DF200456596 /* shirts.json */; };
+		D5F008B51F4320A900456596 /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008B41F4320A900456596 /* DataProviderTests.swift */; };
+		D5F008B81F43308E00456596 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F008B71F43308E00456596 /* test.png */; };
+		D5F008B91F43DAB700456596 /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
+		D5F008BA1F43DB5C00456596 /* BagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB21F39E7D1001DC3FF /* BagItems.swift */; };
 		D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +65,7 @@
 		D56AAAF31F37FF7C002B581F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D56AAAF51F37FF7C002B581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56AAAFA1F37FF7C002B581F /* Shirt StoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shirt StoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D56AAAFE1F37FF7C002B581F /* Shirt_StoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shirt_StoreTests.swift; sourceTree = "<group>"; };
+		D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShirtTests.swift; sourceTree = "<group>"; };
 		D56AAB001F37FF7C002B581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56AAB0A1F380034002B581F /* Shirt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shirt.swift; path = Models/Shirt.swift; sourceTree = "<group>"; };
 		D56AAB0E1F381C35002B581F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Communication/DataManager.swift; sourceTree = "<group>"; };
@@ -70,6 +79,12 @@
 		D5B25DB21F39E7D1001DC3FF /* BagItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItems.swift; path = "Data Sources/BagItems.swift"; sourceTree = "<group>"; };
 		D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagItemsDataSource.swift; sourceTree = "<group>"; };
 		D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItemsViewController.swift; path = Controllers/BagItemsViewController.swift; sourceTree = "<group>"; };
+		D5F008AC1F431BA300456596 /* ShirtsListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShirtsListTests.swift; sourceTree = "<group>"; };
+		D5F008AE1F431C2000456596 /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		D5F008B01F431C8E00456596 /* MockDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataProvider.swift; path = Communication/MockDataProvider.swift; sourceTree = "<group>"; };
+		D5F008B21F431DF200456596 /* shirts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shirts.json; sourceTree = "<group>"; };
+		D5F008B41F4320A900456596 /* DataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
+		D5F008B71F43308E00456596 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = Views/ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +145,11 @@
 		D56AAAFD1F37FF7C002B581F /* Shirt StoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				D56AAAFE1F37FF7C002B581F /* Shirt_StoreTests.swift */,
+				D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */,
+				D5F008B41F4320A900456596 /* DataProviderTests.swift */,
+				D5F008AE1F431C2000456596 /* DataManagerTests.swift */,
+				D5F008AC1F431BA300456596 /* ShirtsListTests.swift */,
+				D5F008B61F43307600456596 /* Resources */,
 				D56AAB001F37FF7C002B581F /* Info.plist */,
 			);
 			path = "Shirt StoreTests";
@@ -151,6 +170,7 @@
 				D56AAB0E1F381C35002B581F /* DataManager.swift */,
 				D52B85C81F39B1280087664C /* UrlDataProvider.swift */,
 				D56AAB191F386A88002B581F /* ShirtSerialization.swift */,
+				D5F008B01F431C8E00456596 /* MockDataProvider.swift */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -184,6 +204,15 @@
 				D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */,
 			);
 			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		D5F008B61F43307600456596 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5F008B21F431DF200456596 /* shirts.json */,
+				D5F008B71F43308E00456596 /* test.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		D5F4CB711F39CDEC001EC1F6 /* Views */ = {
@@ -287,6 +316,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F008B81F43308E00456596 /* test.png in Resources */,
+				D5F008B31F431DF200456596 /* shirts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,12 +352,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F008B91F43DAB700456596 /* ShirtsList.swift in Sources */,
+				D5F008B51F4320A900456596 /* DataProviderTests.swift in Sources */,
 				D56AAB141F3850BF002B581F /* StringExtensions.swift in Sources */,
 				D56AAB0C1F380034002B581F /* Shirt.swift in Sources */,
+				D5F008B11F431C8E00456596 /* MockDataProvider.swift in Sources */,
 				D56AAB181F3869ED002B581F /* Codes.swift in Sources */,
 				D56AAB101F381C35002B581F /* DataManager.swift in Sources */,
-				D56AAAFF1F37FF7C002B581F /* Shirt_StoreTests.swift in Sources */,
+				D5F008AD1F431BA300456596 /* ShirtsListTests.swift in Sources */,
+				D56AAAFF1F37FF7C002B581F /* ShirtTests.swift in Sources */,
+				D5F008AB1F43169200456596 /* UrlDataProvider.swift in Sources */,
+				D5F008AF1F431C2000456596 /* DataManagerTests.swift in Sources */,
 				D56AAB1B1F386A88002B581F /* ShirtSerialization.swift in Sources */,
+				D5F008BA1F43DB5C00456596 /* BagItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

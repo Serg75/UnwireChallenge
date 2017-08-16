@@ -30,3 +30,8 @@ enum ParsingError: Error {
     case missing(String)
     case invalid(String, Any)
 }
+
+enum FileError: Error {
+    case missing(String)
+    case invalid(String)
+}

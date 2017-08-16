@@ -9,7 +9,7 @@
 import XCTest
 @testable import Shirt_Store
 
-class Shirt_StoreTests: XCTestCase {
+class ShirtTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -96,6 +96,62 @@ class Shirt_StoreTests: XCTestCase {
         XCTAssertThrowsError(try Shirt(json: [String: Any]()), failedFromWrongDataMessage)
         
     }
+    
+    func testShirt() {
+        let id = Int64(1749324)
+        let name = "Shirt Name"
+        let price = Int64(1028)
+        let colour = "magenta"
+        let quantity = 5
+        let size = Shirt.Size.XL
+        let picture = "some_address"
+        
+        var shirt = Shirt(id: id,
+                          name: name,
+                          price: price,
+                          colour: colour,
+                          quantity: quantity,
+                          size: size,
+                          picture: picture)
+        
+        XCTAssert(shirt.id == id, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.name == name, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.price == price, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.colour == colour, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.quantity == quantity, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.size == size, "Shirt memberwise initializer test failed")
+        XCTAssert(shirt.picture == picture, "Shirt memberwise initializer test failed")
+        
+        var result = shirt.changeQuantityBy(10)
+        XCTAssert(result == true, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.id == id, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.name == name, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.price == price, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.colour == colour, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.quantity == quantity + 10, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.size == size, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.picture == picture, "Shirt changeQuantityBy function test failed")
+
+        result = shirt.changeQuantityBy(-100)
+        XCTAssert(result == false, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.id == id, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.name == name, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.price == price, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.colour == colour, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.quantity == quantity + 10, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.size == size, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.picture == picture, "Shirt changeQuantityBy function test failed")
+
+        result = shirt.changeQuantityBy(-10)
+        XCTAssert(result == true, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.id == id, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.name == name, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.price == price, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.colour == colour, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.quantity == quantity, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.size == size, "Shirt changeQuantityBy function test failed")
+        XCTAssert(shirt.picture == picture, "Shirt changeQuantityBy function test failed")
+}
     
     func testShirtListInitializer() {
         var id: Int64 = 55

@@ -15,13 +15,23 @@ class ShirtsList {
 
     static private var shirtsData = [Shirt]()
     
+    /// Filters by sizes.
+    /// When this field has non-empty value only shirts with specified sizes
+    /// are returned by 'shirts' field.
     static var filterSizes = Set<Shirt.Size>()
+    
+    /// Filters by colours.
+    /// When this field has non-empty value only shirts with specified colours
+    /// are returned by 'shirts' field.
     static var filterColours = Set<String>()
     
+    /// The total number of filters selected for narrow the shirts list.
     static var selectedFiltersCount: Int {
         return filterSizes.count + filterColours.count
     }
     
+    /// Returns true when shirt list has any item.
+    /// Filters don't change this field.
     static var hasShirts: Bool {
         return shirtsData.count > 0
     }
