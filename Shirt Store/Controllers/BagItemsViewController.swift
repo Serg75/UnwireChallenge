@@ -66,6 +66,22 @@ class BagItemsViewController: UIViewController {
     }
     
     @IBAction func proceed(_ sender: Any) {
+        
+        guard ReachabilityManager.shared.isNetworkAvailable else {
+            let alertController = UIAlertController(title: "No Internet Connection",
+                                                    message: "An internet connection is required.",
+                                                    preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "Ok",
+                                         style: UIAlertActionStyle.default,
+                                         handler: nil)
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+
+            return
+        }
+        
         DataManager.sendOrder(items: BagItems.items, totalPrice: BagItems.itemsPrice, success: {
 
             let alertController = UIAlertController(title: "Success!",

@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EEAE5DB3EE9D96F3EC3CAA6 /* Pods_Shirt_StoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF89EF357C92A3E0AB3AFA31 /* Pods_Shirt_StoreTests.framework */; };
+		64D0DD9A7B4892FD725650FB /* Pods_Shirt_Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D813669BB3EC67D061BB0C58 /* Pods_Shirt_Store.framework */; };
 		D52B85C91F39B1280087664C /* UrlDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B85C81F39B1280087664C /* UrlDataProvider.swift */; };
+		D5462C2A1F4411180091A867 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5462C291F4411180091A867 /* ReachabilityManager.swift */; };
 		D56AAAE81F37FF7C002B581F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAE71F37FF7C002B581F /* AppDelegate.swift */; };
 		D56AAAEA1F37FF7C002B581F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAE91F37FF7C002B581F /* MasterViewController.swift */; };
 		D56AAAEC1F37FF7C002B581F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAEB1F37FF7C002B581F /* DetailViewController.swift */; };
@@ -55,7 +58,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29D9144BED88659201213BFF /* Pods-Shirt StoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirt StoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shirt StoreTests/Pods-Shirt StoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		39FD5B6D60F32B2E9883C035 /* Pods-Shirt StoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirt StoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shirt StoreTests/Pods-Shirt StoreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		825EE3BD9EE912F1E2CBB2D5 /* Pods-Shirt Store.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirt Store.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shirt Store/Pods-Shirt Store.debug.xcconfig"; sourceTree = "<group>"; };
 		D52B85C81F39B1280087664C /* UrlDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlDataProvider.swift; path = Communication/UrlDataProvider.swift; sourceTree = "<group>"; };
+		D5462C291F4411180091A867 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReachabilityManager.swift; path = Communication/ReachabilityManager.swift; sourceTree = "<group>"; };
 		D56AAAE41F37FF7C002B581F /* Shirt Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shirt Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56AAAE71F37FF7C002B581F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D56AAAE91F37FF7C002B581F /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Controllers/MasterViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +93,9 @@
 		D5F008B41F4320A900456596 /* DataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
 		D5F008B71F43308E00456596 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTableViewCell.swift; path = Views/ItemTableViewCell.swift; sourceTree = "<group>"; };
+		D813669BB3EC67D061BB0C58 /* Pods_Shirt_Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirt_Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF89EF357C92A3E0AB3AFA31 /* Pods_Shirt_StoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shirt_StoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6544DDFBB8DB6852F6C028 /* Pods-Shirt Store.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shirt Store.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shirt Store/Pods-Shirt Store.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D0DD9A7B4892FD725650FB /* Pods_Shirt_Store.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,18 +111,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEAE5DB3EE9D96F3EC3CAA6 /* Pods_Shirt_StoreTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40BF066FD26B50BD6EE18F0A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				825EE3BD9EE912F1E2CBB2D5 /* Pods-Shirt Store.debug.xcconfig */,
+				FC6544DDFBB8DB6852F6C028 /* Pods-Shirt Store.release.xcconfig */,
+				39FD5B6D60F32B2E9883C035 /* Pods-Shirt StoreTests.debug.xcconfig */,
+				29D9144BED88659201213BFF /* Pods-Shirt StoreTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		501EB5D26446187DA15B8F07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D813669BB3EC67D061BB0C58 /* Pods_Shirt_Store.framework */,
+				EF89EF357C92A3E0AB3AFA31 /* Pods_Shirt_StoreTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D56AAADB1F37FF7C002B581F = {
 			isa = PBXGroup;
 			children = (
 				D56AAAE61F37FF7C002B581F /* Shirt Store */,
 				D56AAAFD1F37FF7C002B581F /* Shirt StoreTests */,
 				D56AAAE51F37FF7C002B581F /* Products */,
+				40BF066FD26B50BD6EE18F0A /* Pods */,
+				501EB5D26446187DA15B8F07 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +205,7 @@
 				D52B85C81F39B1280087664C /* UrlDataProvider.swift */,
 				D56AAB191F386A88002B581F /* ShirtSerialization.swift */,
 				D5F008B01F431C8E00456596 /* MockDataProvider.swift */,
+				D5462C291F4411180091A867 /* ReachabilityManager.swift */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -230,9 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D56AAB031F37FF7C002B581F /* Build configuration list for PBXNativeTarget "Shirt Store" */;
 			buildPhases = (
+				558B38B2652A663C7F58945D /* [CP] Check Pods Manifest.lock */,
 				D56AAAE01F37FF7C002B581F /* Sources */,
 				D56AAAE11F37FF7C002B581F /* Frameworks */,
 				D56AAAE21F37FF7C002B581F /* Resources */,
+				AB58D42EB8A9EE69AEDA5B6D /* [CP] Embed Pods Frameworks */,
+				4F8C23660F04919EBB101E12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D56AAB061F37FF7C002B581F /* Build configuration list for PBXNativeTarget "Shirt StoreTests" */;
 			buildPhases = (
+				E4F61CE0C7F2B12D2EB2431B /* [CP] Check Pods Manifest.lock */,
 				D56AAAF61F37FF7C002B581F /* Sources */,
 				D56AAAF71F37FF7C002B581F /* Frameworks */,
 				D56AAAF81F37FF7C002B581F /* Resources */,
+				A8D207809640E0E93DAC22E4 /* [CP] Embed Pods Frameworks */,
+				6A247EB89A73700BD4D54701 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,6 +364,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F8C23660F04919EBB101E12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shirt Store/Pods-Shirt Store-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		558B38B2652A663C7F58945D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6A247EB89A73700BD4D54701 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shirt StoreTests/Pods-Shirt StoreTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8D207809640E0E93DAC22E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shirt StoreTests/Pods-Shirt StoreTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB58D42EB8A9EE69AEDA5B6D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shirt Store/Pods-Shirt Store-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F61CE0C7F2B12D2EB2431B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D56AAAE01F37FF7C002B581F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -332,6 +466,7 @@
 				D56AAB221F395134002B581F /* ShirtsList.swift in Sources */,
 				D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */,
 				D56AAB0B1F380034002B581F /* Shirt.swift in Sources */,
+				D5462C2A1F4411180091A867 /* ReachabilityManager.swift in Sources */,
 				D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */,
 				D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */,
 				D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */,
@@ -493,6 +628,7 @@
 		};
 		D56AAB041F37FF7C002B581F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 825EE3BD9EE912F1E2CBB2D5 /* Pods-Shirt Store.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Shirt Store/Info.plist";
@@ -505,6 +641,7 @@
 		};
 		D56AAB051F37FF7C002B581F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC6544DDFBB8DB6852F6C028 /* Pods-Shirt Store.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Shirt Store/Info.plist";
@@ -517,6 +654,7 @@
 		};
 		D56AAB071F37FF7C002B581F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39FD5B6D60F32B2E9883C035 /* Pods-Shirt StoreTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -531,6 +669,7 @@
 		};
 		D56AAB081F37FF7C002B581F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29D9144BED88659201213BFF /* Pods-Shirt StoreTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
