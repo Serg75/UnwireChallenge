@@ -21,6 +21,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate {
 
         tableView.dataSource = tableViewDataSource
         
+        showResultButton.setTitleColor(UIColor.gray, for: UIControlState.disabled)
         updateShowResultButton()
     }
 
@@ -59,6 +60,18 @@ class FiltersViewController: UIViewController, UITableViewDelegate {
     }
     
     private func updateShowResultButton() {
-        showResultButton.setTitle("Show \(ShirtsList.shirts.count) items", for: UIControlState.normal)
+        var string = ""
+        switch ShirtsList.shirts.count {
+        case 0:
+            string = "Nothign to show"
+            showResultButton.isEnabled = false
+        case 1:
+            string = "Show 1 lot"
+            showResultButton.isEnabled = true
+        default:
+            string = "Show \(ShirtsList.shirts.count) lots"
+            showResultButton.isEnabled = true
+        }
+        showResultButton.setTitle(string, for: UIControlState.normal)
     }
 }
