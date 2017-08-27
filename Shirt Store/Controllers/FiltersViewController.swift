@@ -8,12 +8,22 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController, UITableViewDelegate {
+class FiltersViewController: UIViewController, UITableViewDelegate, ItemsInjectionClient {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showResultButton: UIButton!
     
     let tableViewDataSource = FiltersDataSource()
+
+    
+    // dependency injection
+
+    var shirtsList: ShirtsList!
+    
+    func set(provider: DataProvider, shirtsList: ShirtsList, bagList: BagList) {
+        self.shirtsList = shirtsList
+        tableViewDataSource.set(provider: provider, shirtsList: shirtsList, bagList: bagList)
+    }
     
     
     override func viewDidLoad() {
@@ -61,7 +71,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate {
     
     private func updateShowResultButton() {
         var string = ""
-        switch ShirtsList.shirts.count {
+        switch shirtsList.shirts.count {
         case 0:
             string = "Nothign to show"
             showResultButton.isEnabled = false
@@ -69,7 +79,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate {
             string = "Show 1 lot"
             showResultButton.isEnabled = true
         default:
-            string = "Show \(ShirtsList.shirts.count) lots"
+            string = "Show \(shirtsList.shirts.count) lots"
             showResultButton.isEnabled = true
         }
         showResultButton.setTitle(string, for: UIControlState.normal)

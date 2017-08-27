@@ -14,16 +14,16 @@ let bagItemsNotification = Notification.Name("BagItemDidChangeNotification")
 
 
 /// This class stores items in the bag.
-class BagItems {
+class BagItems : BagList {
     
     // user defaults
-    static private let myBagKey = "MyBagKey"
+    private let myBagKey = "MyBagKey"
     
-    static private var itemsList = [Shirt]()
+    private var itemsList = [Shirt]()
     
     
     /// Items in the bag.
-    static var items: [Shirt] {
+    var items: [Shirt] {
         return itemsList
     }
     
@@ -31,16 +31,18 @@ class BagItems {
     /// Adds item into the bag.
     ///
     /// - Parameter item: Item to add.
-    static func addToBag(item: Shirt) {
-        itemsList.append(item)
-        notifyForCollection()
+    func addToBag(item: Shirt) {
+        if !isItemInBag(item) {
+            itemsList.append(item)
+            notifyForCollection()
+        }
     }
     
     
     /// Removes item from the bag.
     ///
     /// - Parameter item: Item to remove.
-    static func removeFromBag(item: Shirt) {
+    func removeFromBag(item: Shirt) {
         if let idx = itemsList.index(where: { $0.id == item.id } ) {
             itemsList.remove(at: idx)
             notifyForCollection()
@@ -48,7 +50,7 @@ class BagItems {
     }
     
     /// Removes all items from the bag.
-    static func clear() {
+    func clear() {
         itemsList.removeAll()
         notifyForCollection()
     }
@@ -59,7 +61,7 @@ class BagItems {
     /// Other classes should listen the 'BagItemDidChangeNotification' to be informed on changes.
     ///
     /// - Parameter item: Specified item to change quantity.
-    static func increaseQuantity(item: Shirt) {
+    func increaseQuantity(item: Shirt) {
         if let idx = itemsList.index(where: { $0.id == item.id }) {
             if itemsList[idx].changeQuantityBy(1) {
                 notifyForItem(item.id)
@@ -72,7 +74,7 @@ class BagItems {
     /// Other classes should listen the 'BagItemDidChangeNotification' to be informed on changes.
     ///
     /// - Parameter item: Specified item to change quantity.
-    static func reduceQuantity(item: Shirt) {
+    func reduceQuantity(item: Shirt) {
         if let idx = itemsList.index(where: { $0.id == item.id }) {
             if itemsList[idx].changeQuantityBy(-1) {
                 notifyForItem(item.id)
@@ -82,7 +84,7 @@ class BagItems {
     
     
     /// Send notification about collection change.
-    private static func notifyForCollection() {
+    private func notifyForCollection() {
         NotificationCenter.default.post(name: bagItemsNotification, object: nil)
     }
 
@@ -90,7 +92,7 @@ class BagItems {
     /// Send notification about item in collection change.
     ///
     /// - Parameter itemId: Item's id which data has been changed.
-    private static func notifyForItem(_ itemId: Int64) {
+    private func notifyForItem(_ itemId: Int64) {
         NotificationCenter.default.post(name: bagItemsNotification, object: ["id": itemId])
     }
 
@@ -98,29 +100,31 @@ class BagItems {
     ///
     /// - Parameter item:   Item to check
     /// - Returns:          True if the item in the bag
-    static func isItemInBag(_ item: Shirt) -> Bool {
+    func isItemInBag(_ item: Shirt) -> Bool {
         return itemsList.contains(where: { return $0.id == item.id })
     }
     
     
     /// The total number of items in the bag.
     /// Don't use 'BagItems.items.cont' which gives the number of lots.
-    static var itemsCount: Int {
+    var itemsCount: Int {
         return itemsList.reduce(0) { $0 + $1.quantity }
     }
     
     /// Total price for all items in the bag.
-    static var itemsPrice: Int64 {
+    var itemsPrice: Int64 {
         return itemsList.reduce(Int64(0)) { $0 + $1.price * Int64($1.quantity) }
     }
     
     
-    /// Call this method right after successful load of the items from the server.
-    static func restoreItems() {
+    /// Call this method to restore saved items.
+    ///
+    /// - Parameter shirts: Available shirts. Only shirts from this list will be restored. 
+    func restoreItemsWithShirts(_ shirts: [Shirt]) {
         if let myItems = UserDefaults.standard.array(forKey: myBagKey) as? [[String: NSNumber]] {
             
             var myShirts = [Shirt]()
-            ShirtsList.shirts.forEach({ shirt in
+            shirts.forEach({ shirt in
                 if let myItem = myItems.first(where: { dictItem -> Bool in
                     if let id = dictItem["id"] {
                         return Int64(id) == shirt.id
@@ -142,7 +146,7 @@ class BagItems {
     
     
     /// Call this method before terminating or going app to the background.
-    static func saveItems() {
+    func saveItems() {
         let itemsIDs = itemsList.map { ["id": NSNumber(value: $0.id), "quantity": NSNumber(value: $0.quantity)] } as [[String: NSNumber]]
         UserDefaults.standard.set(itemsIDs, forKey: myBagKey)
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, ItemsInjectionClient {
     
     private var isItemInBag = false
     
@@ -20,6 +20,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var addToBagButton: UIButton!
 
+    
+    // dependency injection
+    
+    private var provider: DataProvider!
+    private var bagList: BagList!
+    
+    func set(provider: DataProvider, shirtsList: ShirtsList, bagList: BagList) {
+        self.provider = provider
+        self.bagList = bagList
+    }
+    
 
     func configureView() {
         // Update the user interface for the detail item.
@@ -31,9 +42,9 @@ class DetailViewController: UIViewController {
             if let label = self.quantityLabel { label.text = item.quantity.formattedQuantity(markSoldedOut: true) }
             
             if (self.imageView) != nil {
-                DataManager.getImageFrom(link: item.picture) { image in
+                provider.loadImageFrom(link: item.picture, completion: { image in
                     self.imageView.image = image
-                }
+                })
             }
             
             if let button = self.addToBagButton, item.quantity < 1 {
@@ -70,7 +81,7 @@ class DetailViewController: UIViewController {
 
     private func configureAddToBagButton() {
         if let item = self.detailItem {
-            isItemInBag = BagItems.isItemInBag(item)
+            isItemInBag = bagList.isItemInBag(item)
             if !isItemInBag {
                 addToBagButton.setTitle("Add to Bag", for: UIControlState.normal)
             } else {
@@ -84,9 +95,9 @@ class DetailViewController: UIViewController {
             if !isItemInBag {
                 // We add item with quantity = 1
                 item.quantity = 1
-                BagItems.addToBag(item: item)
+                bagList.addToBag(item: item)
             } else {
-                BagItems.removeFromBag(item: item)
+                bagList.removeFromBag(item: item)
             }
             configureAddToBagButton()
         }

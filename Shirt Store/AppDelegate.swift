@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
+    private var shirtsList: ShirtsList!
+    private var bagList: BagList!
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+
+        
+        let provider = UrlDataProvider()
+        shirtsList = Shirts(provider: provider)
+        bagList = BagItems()
+
+        for child in splitViewController.viewControllers {
+            if let client = child as? ItemsInjectionClient {
+                client.set(provider: provider, shirtsList: shirtsList, bagList: bagList)
+            }
+            for subChild in child.childViewControllers {
+                if let client = subChild as? ItemsInjectionClient {
+                    client.set(provider: provider, shirtsList: shirtsList, bagList: bagList)
+                }
+            }
+        }
+        
         return true
     }
 
@@ -32,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        BagItems.saveItems()
+        bagList.saveItems()
         ReachabilityManager.shared.stopMonitoring()
     }
 

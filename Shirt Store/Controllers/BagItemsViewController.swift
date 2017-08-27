@@ -8,15 +8,31 @@
 
 import UIKit
 
-class BagItemsViewController: UIViewController {
+class BagItemsViewController: UIViewController, ItemsInjectionClient {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemsInfoLabel: UILabel!
     @IBOutlet weak var proceedButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
-    
-    let tableViewDataSource = BagItemsDataSource()
 
+    
+    // dependency injection
+    
+    private var provider: DataProvider!
+    private var shirtsList: ShirtsList!
+    private var bagList: BagList!
+    
+    var tableViewDataSource = BagItemsDataSource()
+    
+    
+    func set(provider: DataProvider, shirtsList: ShirtsList, bagList: BagList) {
+        self.provider = provider
+        self.shirtsList = shirtsList
+        self.bagList = bagList
+        
+        tableViewDataSource.set(provider: provider, shirtsList: shirtsList, bagList: bagList)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +64,16 @@ class BagItemsViewController: UIViewController {
     // MARK: -
     
     @IBAction func clearItems() {
-        BagItems.clear()
+        bagList.clear()
         self.tableView.reloadData()
         configureView()
     }
     
     private func configureView() {
-        let itemsCount = BagItems.itemsCount
+        let itemsCount = bagList.itemsCount
         var string = itemsCount.formattedQuantity()
         if itemsCount > 0 {
-            string += ", €\(BagItems.itemsPrice)"
+            string += ", €\(bagList.itemsPrice)"
         }
         itemsInfoLabel.text = string
         self.proceedButton.isHidden = itemsCount == 0
@@ -82,34 +98,37 @@ class BagItemsViewController: UIViewController {
             return
         }
         
-        DataManager.sendOrder(items: BagItems.items, totalPrice: BagItems.itemsPrice, success: {
-
-            let alertController = UIAlertController(title: "Success!",
-                                                    message: "Thank you for choosing our store!",
-                                                    preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "OK",
-                                         style: UIAlertActionStyle.default,
-                                         handler: { _ in
-                BagItems.clear()
+        let orderData = Shirt.orderData(items: bagList.items, totalPrice: bagList.itemsPrice)
+        
+        provider.sendOrder(orderData: orderData) { error in
+            if error == nil {
+                let alertController = UIAlertController(title: "Success!",
+                                                        message: "Thank you for choosing our store!",
+                                                        preferredStyle: UIAlertControllerStyle.alert)
                 
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindFromBagSegue", sender: self)
-                }
-            })
-            
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true)
-
-        }) { error in
-            
-            let alertController = UIAlertController(title: "Error",
-                                                    message: error.localizedDescription,
-                                                    preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
+                let okAction = UIAlertAction(title: "OK",
+                                             style: UIAlertActionStyle.default,
+                                             handler: { _ in
+                    self.bagList.clear()
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "unwindFromBagSegue", sender: self)
+                    }
+                })
+                
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true)
+                
+            } else {
+                
+                let alertController = UIAlertController(title: "Error",
+                                                        message: error!.localizedDescription,
+                                                        preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

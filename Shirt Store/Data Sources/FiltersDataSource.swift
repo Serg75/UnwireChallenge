@@ -10,9 +10,16 @@ import UIKit
 
 
 /// This class gives the data for filtering items.
-class FiltersDataSource: NSObject, UITableViewDataSource {
+class FiltersDataSource: NSObject, UITableViewDataSource, ItemsInjectionClient {
     
-    
+    // dependency injection
+
+    var shirtsList: ShirtsList!
+
+    func set(provider: DataProvider, shirtsList: ShirtsList, bagList: BagList) {
+        self.shirtsList = shirtsList
+    }
+
     /// Section for filtering.
     ///
     /// - size:   Filtering by size.
@@ -34,9 +41,9 @@ class FiltersDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Section.size.rawValue:
-            return ShirtsList.sizes.count
+            return shirtsList.sizes.count
         default:
-            return ShirtsList.colours.count
+            return shirtsList.colours.count
         }
     }
 
@@ -45,10 +52,10 @@ class FiltersDataSource: NSObject, UITableViewDataSource {
         
         switch indexPath.section {
         case Section.size.rawValue:
-            let size = ShirtsList.sizes[indexPath.row]
+            let size = shirtsList.sizes[indexPath.row]
             cell.textLabel?.text = size.string
         default:
-            let colour = ShirtsList.colours[indexPath.row]
+            let colour = shirtsList.colours[indexPath.row]
             cell.textLabel?.text = colour
         }
         cell.accessoryType = isFilterSelected(indexPath.row, in: indexPath.section) ? .checkmark : .none
@@ -62,9 +69,9 @@ class FiltersDataSource: NSObject, UITableViewDataSource {
     private func isFilterSelected(_ filterIdx: Int, in section: Int) -> Bool {
         switch section {
         case Section.size.rawValue:
-            return ShirtsList.filterSizes.contains(ShirtsList.sizes[filterIdx])
+            return shirtsList.filterSizes.contains(shirtsList.sizes[filterIdx])
         default:
-            return ShirtsList.filterColours.contains(ShirtsList.colours[filterIdx])
+            return shirtsList.filterColours.contains(shirtsList.colours[filterIdx])
         }
     }
     
@@ -77,9 +84,9 @@ class FiltersDataSource: NSObject, UITableViewDataSource {
     func selectFilter(_ filterIdx: Int, in section: Int) {
         switch section {
         case Section.size.rawValue:
-            ShirtsList.filterSizes.insert(ShirtsList.sizes[filterIdx])
+            shirtsList.filterSizes.insert(shirtsList.sizes[filterIdx])
         default:
-            ShirtsList.filterColours.insert(ShirtsList.colours[filterIdx])
+            shirtsList.filterColours.insert(shirtsList.colours[filterIdx])
         }
     }
 
@@ -92,16 +99,16 @@ class FiltersDataSource: NSObject, UITableViewDataSource {
     func deselectFilter(_ filterIdx: Int, in section: Int) {
         switch section {
         case Section.size.rawValue:
-            ShirtsList.filterSizes.remove(ShirtsList.sizes[filterIdx])
+            shirtsList.filterSizes.remove(shirtsList.sizes[filterIdx])
         default:
-            ShirtsList.filterColours.remove(ShirtsList.colours[filterIdx])
+            shirtsList.filterColours.remove(shirtsList.colours[filterIdx])
         }
     }
     
     
     /// This function removes all sizes and colors from filtering.
     func clearAllFilters() {
-        ShirtsList.filterSizes.removeAll()
-        ShirtsList.filterColours.removeAll()
+        shirtsList.filterSizes.removeAll()
+        shirtsList.filterColours.removeAll()
     }
 }

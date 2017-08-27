@@ -20,8 +20,6 @@
 		D56AAAFF1F37FF7C002B581F /* ShirtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */; };
 		D56AAB0B1F380034002B581F /* Shirt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0A1F380034002B581F /* Shirt.swift */; };
 		D56AAB0C1F380034002B581F /* Shirt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0A1F380034002B581F /* Shirt.swift */; };
-		D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0E1F381C35002B581F /* DataManager.swift */; };
-		D56AAB101F381C35002B581F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB0E1F381C35002B581F /* DataManager.swift */; };
 		D56AAB131F3850BF002B581F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB121F3850BF002B581F /* StringExtensions.swift */; };
 		D56AAB141F3850BF002B581F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB121F3850BF002B581F /* StringExtensions.swift */; };
 		D56AAB171F3869ED002B581F /* Codes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB161F3869ED002B581F /* Codes.swift */; };
@@ -30,19 +28,29 @@
 		D56AAB1B1F386A88002B581F /* ShirtSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB191F386A88002B581F /* ShirtSerialization.swift */; };
 		D56AAB1E1F39395B002B581F /* FiltersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */; };
 		D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */; };
-		D56AAB221F395134002B581F /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
+		D56AAB221F395134002B581F /* Shirts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* Shirts.swift */; };
 		D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */; };
 		D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB21F39E7D1001DC3FF /* BagItems.swift */; };
 		D5B25DB51F39F321001DC3FF /* BagItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */; };
 		D5B25DB71F39FAE2001DC3FF /* BagItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */; };
+		D5D7C7A71F51863B0026D8B8 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7A61F51863B0026D8B8 /* DataProvider.swift */; };
+		D5D7C7A81F51863B0026D8B8 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7A61F51863B0026D8B8 /* DataProvider.swift */; };
+		D5D7C7AA1F518FBC0026D8B8 /* BagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7A91F518FBC0026D8B8 /* BagList.swift */; };
+		D5D7C7AB1F518FBC0026D8B8 /* BagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7A91F518FBC0026D8B8 /* BagList.swift */; };
+		D5D7C7AD1F518FF00026D8B8 /* ItemsInjectionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7AC1F518FF00026D8B8 /* ItemsInjectionClient.swift */; };
+		D5D7C7AE1F518FF00026D8B8 /* ItemsInjectionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7AC1F518FF00026D8B8 /* ItemsInjectionClient.swift */; };
+		D5D7C7B01F52A8010026D8B8 /* BagItemsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7AF1F52A8010026D8B8 /* BagItemsTest.swift */; };
+		D5D7C7B51F52B2A60026D8B8 /* FiltersDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7C7B41F52B2A60026D8B8 /* FiltersDataSourceTest.swift */; };
+		D5D7C7B61F52B3C40026D8B8 /* FiltersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */; };
+		D5E7BAC11F505AA50035A753 /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7BAC01F505AA50035A753 /* ShirtsList.swift */; };
+		D5E7BAC21F505AA50035A753 /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E7BAC01F505AA50035A753 /* ShirtsList.swift */; };
 		D5F008AB1F43169200456596 /* UrlDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52B85C81F39B1280087664C /* UrlDataProvider.swift */; };
 		D5F008AD1F431BA300456596 /* ShirtsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008AC1F431BA300456596 /* ShirtsListTests.swift */; };
-		D5F008AF1F431C2000456596 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008AE1F431C2000456596 /* DataManagerTests.swift */; };
 		D5F008B11F431C8E00456596 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008B01F431C8E00456596 /* MockDataProvider.swift */; };
 		D5F008B31F431DF200456596 /* shirts.json in Resources */ = {isa = PBXBuildFile; fileRef = D5F008B21F431DF200456596 /* shirts.json */; };
 		D5F008B51F4320A900456596 /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F008B41F4320A900456596 /* DataProviderTests.swift */; };
 		D5F008B81F43308E00456596 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F008B71F43308E00456596 /* test.png */; };
-		D5F008B91F43DAB700456596 /* ShirtsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* ShirtsList.swift */; };
+		D5F008B91F43DAB700456596 /* Shirts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AAB211F395134002B581F /* Shirts.swift */; };
 		D5F008BA1F43DB5C00456596 /* BagItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B25DB21F39E7D1001DC3FF /* BagItems.swift */; };
 		D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4CB721F39CE28001EC1F6 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -75,19 +83,23 @@
 		D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShirtTests.swift; sourceTree = "<group>"; };
 		D56AAB001F37FF7C002B581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D56AAB0A1F380034002B581F /* Shirt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shirt.swift; path = Models/Shirt.swift; sourceTree = "<group>"; };
-		D56AAB0E1F381C35002B581F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = Communication/DataManager.swift; sourceTree = "<group>"; };
 		D56AAB121F3850BF002B581F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		D56AAB161F3869ED002B581F /* Codes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Codes.swift; path = Communication/Codes.swift; sourceTree = "<group>"; };
 		D56AAB191F386A88002B581F /* ShirtSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtSerialization.swift; path = Communication/ShirtSerialization.swift; sourceTree = "<group>"; };
 		D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersDataSource.swift; path = "Data Sources/FiltersDataSource.swift"; sourceTree = "<group>"; };
 		D56AAB1F1F394ADB002B581F /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersViewController.swift; path = Controllers/FiltersViewController.swift; sourceTree = "<group>"; };
-		D56AAB211F395134002B581F /* ShirtsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtsList.swift; path = "Data Sources/ShirtsList.swift"; sourceTree = "<group>"; };
+		D56AAB211F395134002B581F /* Shirts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shirts.swift; path = "Data Sources/Shirts.swift"; sourceTree = "<group>"; };
 		D5B25DB01F39E1A6001DC3FF /* ValuesExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesExtensions.swift; sourceTree = "<group>"; };
 		D5B25DB21F39E7D1001DC3FF /* BagItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItems.swift; path = "Data Sources/BagItems.swift"; sourceTree = "<group>"; };
 		D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagItemsDataSource.swift; sourceTree = "<group>"; };
 		D5B25DB61F39FAE2001DC3FF /* BagItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagItemsViewController.swift; path = Controllers/BagItemsViewController.swift; sourceTree = "<group>"; };
+		D5D7C7A61F51863B0026D8B8 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Protocols/DataProvider.swift; sourceTree = "<group>"; };
+		D5D7C7A91F518FBC0026D8B8 /* BagList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BagList.swift; path = Protocols/BagList.swift; sourceTree = "<group>"; };
+		D5D7C7AC1F518FF00026D8B8 /* ItemsInjectionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsInjectionClient.swift; path = Protocols/ItemsInjectionClient.swift; sourceTree = "<group>"; };
+		D5D7C7AF1F52A8010026D8B8 /* BagItemsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BagItemsTest.swift; sourceTree = "<group>"; };
+		D5D7C7B41F52B2A60026D8B8 /* FiltersDataSourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersDataSourceTest.swift; sourceTree = "<group>"; };
+		D5E7BAC01F505AA50035A753 /* ShirtsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShirtsList.swift; path = Protocols/ShirtsList.swift; sourceTree = "<group>"; };
 		D5F008AC1F431BA300456596 /* ShirtsListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShirtsListTests.swift; sourceTree = "<group>"; };
-		D5F008AE1F431C2000456596 /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		D5F008B01F431C8E00456596 /* MockDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataProvider.swift; path = Communication/MockDataProvider.swift; sourceTree = "<group>"; };
 		D5F008B21F431DF200456596 /* shirts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shirts.json; sourceTree = "<group>"; };
 		D5F008B41F4320A900456596 /* DataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 				D56AAB151F3866A3002B581F /* Controllers */,
 				D56AAB1C1F3938AA002B581F /* Data Sources */,
 				D56AAB0D1F381BCF002B581F /* Communication */,
+				D5E7BABF1F5054930035A753 /* Protocols */,
 				D56AAB111F385090002B581F /* Extensions */,
 				D56AAAE71F37FF7C002B581F /* AppDelegate.swift */,
 				D56AAAED1F37FF7C002B581F /* Main.storyboard */,
@@ -181,8 +194,9 @@
 			children = (
 				D56AAAFE1F37FF7C002B581F /* ShirtTests.swift */,
 				D5F008B41F4320A900456596 /* DataProviderTests.swift */,
-				D5F008AE1F431C2000456596 /* DataManagerTests.swift */,
 				D5F008AC1F431BA300456596 /* ShirtsListTests.swift */,
+				D5D7C7AF1F52A8010026D8B8 /* BagItemsTest.swift */,
+				D5D7C7B41F52B2A60026D8B8 /* FiltersDataSourceTest.swift */,
 				D5F008B61F43307600456596 /* Resources */,
 				D56AAB001F37FF7C002B581F /* Info.plist */,
 			);
@@ -201,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				D56AAB161F3869ED002B581F /* Codes.swift */,
-				D56AAB0E1F381C35002B581F /* DataManager.swift */,
 				D52B85C81F39B1280087664C /* UrlDataProvider.swift */,
 				D56AAB191F386A88002B581F /* ShirtSerialization.swift */,
 				D5F008B01F431C8E00456596 /* MockDataProvider.swift */,
@@ -234,11 +247,22 @@
 			isa = PBXGroup;
 			children = (
 				D56AAB1D1F39395A002B581F /* FiltersDataSource.swift */,
-				D56AAB211F395134002B581F /* ShirtsList.swift */,
+				D56AAB211F395134002B581F /* Shirts.swift */,
 				D5B25DB21F39E7D1001DC3FF /* BagItems.swift */,
 				D5B25DB41F39F321001DC3FF /* BagItemsDataSource.swift */,
 			);
 			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		D5E7BABF1F5054930035A753 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D5E7BAC01F505AA50035A753 /* ShirtsList.swift */,
+				D5D7C7A91F518FBC0026D8B8 /* BagList.swift */,
+				D5D7C7A61F51863B0026D8B8 /* DataProvider.swift */,
+				D5D7C7AC1F518FF00026D8B8 /* ItemsInjectionClient.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		D5F008B61F43307600456596 /* Resources */ = {
@@ -463,23 +487,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56AAB131F3850BF002B581F /* StringExtensions.swift in Sources */,
-				D56AAB221F395134002B581F /* ShirtsList.swift in Sources */,
-				D56AAB0F1F381C35002B581F /* DataManager.swift in Sources */,
+				D56AAB221F395134002B581F /* Shirts.swift in Sources */,
 				D56AAB0B1F380034002B581F /* Shirt.swift in Sources */,
 				D5462C2A1F4411180091A867 /* ReachabilityManager.swift in Sources */,
 				D56AAB1A1F386A88002B581F /* ShirtSerialization.swift in Sources */,
 				D5B25DB11F39E1A6001DC3FF /* ValuesExtensions.swift in Sources */,
+				D5D7C7AA1F518FBC0026D8B8 /* BagList.swift in Sources */,
 				D5B25DB31F39E7D1001DC3FF /* BagItems.swift in Sources */,
 				D5B25DB71F39FAE2001DC3FF /* BagItemsViewController.swift in Sources */,
 				D56AAB201F394ADB002B581F /* FiltersViewController.swift in Sources */,
+				D5E7BAC11F505AA50035A753 /* ShirtsList.swift in Sources */,
 				D5F4CB731F39CE28001EC1F6 /* ItemTableViewCell.swift in Sources */,
 				D56AAAEC1F37FF7C002B581F /* DetailViewController.swift in Sources */,
 				D5B25DB51F39F321001DC3FF /* BagItemsDataSource.swift in Sources */,
+				D5D7C7A71F51863B0026D8B8 /* DataProvider.swift in Sources */,
 				D56AAAEA1F37FF7C002B581F /* MasterViewController.swift in Sources */,
 				D56AAB1E1F39395B002B581F /* FiltersDataSource.swift in Sources */,
 				D56AAB171F3869ED002B581F /* Codes.swift in Sources */,
 				D52B85C91F39B1280087664C /* UrlDataProvider.swift in Sources */,
 				D56AAAE81F37FF7C002B581F /* AppDelegate.swift in Sources */,
+				D5D7C7AD1F518FF00026D8B8 /* ItemsInjectionClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,18 +514,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5F008B91F43DAB700456596 /* ShirtsList.swift in Sources */,
+				D5F008B91F43DAB700456596 /* Shirts.swift in Sources */,
 				D5F008B51F4320A900456596 /* DataProviderTests.swift in Sources */,
+				D5E7BAC21F505AA50035A753 /* ShirtsList.swift in Sources */,
 				D56AAB141F3850BF002B581F /* StringExtensions.swift in Sources */,
 				D56AAB0C1F380034002B581F /* Shirt.swift in Sources */,
 				D5F008B11F431C8E00456596 /* MockDataProvider.swift in Sources */,
+				D5D7C7B61F52B3C40026D8B8 /* FiltersDataSource.swift in Sources */,
 				D56AAB181F3869ED002B581F /* Codes.swift in Sources */,
-				D56AAB101F381C35002B581F /* DataManager.swift in Sources */,
 				D5F008AD1F431BA300456596 /* ShirtsListTests.swift in Sources */,
+				D5D7C7B51F52B2A60026D8B8 /* FiltersDataSourceTest.swift in Sources */,
 				D56AAAFF1F37FF7C002B581F /* ShirtTests.swift in Sources */,
+				D5D7C7B01F52A8010026D8B8 /* BagItemsTest.swift in Sources */,
+				D5D7C7AE1F518FF00026D8B8 /* ItemsInjectionClient.swift in Sources */,
 				D5F008AB1F43169200456596 /* UrlDataProvider.swift in Sources */,
-				D5F008AF1F431C2000456596 /* DataManagerTests.swift in Sources */,
+				D5D7C7A81F51863B0026D8B8 /* DataProvider.swift in Sources */,
 				D56AAB1B1F386A88002B581F /* ShirtSerialization.swift in Sources */,
+				D5D7C7AB1F518FBC0026D8B8 /* BagList.swift in Sources */,
 				D5F008BA1F43DB5C00456596 /* BagItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

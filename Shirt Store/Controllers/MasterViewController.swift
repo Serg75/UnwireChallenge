@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, ItemsInjectionClient {
 
     enum SortSelection: Int {
         case size
@@ -24,6 +24,19 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     
+    
+    // dependency injection
+    
+    private var provider: DataProvider!
+    private var shirtsList: ShirtsList!
+    private var bagList: BagList!
+    
+    func set(provider: DataProvider, shirtsList: ShirtsList, bagList: BagList) {
+        self.provider = provider
+        self.shirtsList = shirtsList
+        self.bagList = bagList
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,16 +75,19 @@ class MasterViewController: UITableViewController {
 
     func populateItems() {
         
-        ShirtsList.loadShirts(success: { 
+        shirtsList.loadShirts(success: {
+
+            self.bagList.restoreItemsWithShirts(self.shirtsList.shirts)
+            
             DispatchQueue.main.async {
                 self.updateShirts()
-                if ShirtsList.hasShirts {
+                if self.shirtsList.hasShirts {
                     self.filterButton.isEnabled = true
                     self.filterIcon.alpha = 1
                     self.updateBag()
                 }
             }
-        }) {
+        }, fail: { _ in
             let alertController = UIAlertController(title: "Error", message: "Server doesn't response", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "Repeat",
@@ -84,18 +100,18 @@ class MasterViewController: UITableViewController {
             })
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
-        }
+        })
     }
     
     func updateShirts() {
         tableView.reloadData()
-        let filtersCount = ShirtsList.selectedFiltersCount
+        let filtersCount = shirtsList.selectedFiltersCount
         filterLabel.text = filtersCount > 0 ? "(\(filtersCount))" : ""
-        itemsCountLabel.text = "\(ShirtsList.shirts.count) lots"
+        itemsCountLabel.text = "\(shirtsList.shirts.count) lots"
     }
     
     func updateBag() {
-        let bagItemsCount = BagItems.itemsCount
+        let bagItemsCount = bagList.itemsCount
         bagItemsCountLabel.text = bagItemsCount > 0 ? "\(bagItemsCount)" : ""
     }
 
@@ -104,12 +120,18 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let shirt = ShirtsList.shirts[indexPath.row]
+                let shirt = shirtsList.shirts[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = shirt
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        }
+        
+        if let target = segue.destination as? ItemsInjectionClient {
+            target.set(provider: self.provider, shirtsList: self.shirtsList, bagList: self.bagList)
+        } else if let target = (segue.destination as? UINavigationController)?.topViewController as? ItemsInjectionClient {
+            target.set(provider: self.provider, shirtsList: self.shirtsList, bagList: self.bagList)
         }
     }
     
@@ -125,15 +147,20 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ShirtsList.shirts.count
+        return shirtsList.shirts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let shirt = ShirtsList.shirts[indexPath.row]
-        let inBag = BagItems.isItemInBag(shirt)
-        (cell as! ItemTableViewCell).setupSell(shirt: shirt, isInBag: inBag)
+        let shirt = shirtsList.shirts[indexPath.row]
+        let inBag = bagList.isItemInBag(shirt)
+        (cell as! ItemTableViewCell).setupSell(shirt: shirt, bagList: bagList, isInBag: inBag)
+
+        provider.loadImageFrom(link: shirt.picture) { (image) in
+            (cell as! ItemTableViewCell).setPicture(image)
+        }
+
         return cell
     }
 

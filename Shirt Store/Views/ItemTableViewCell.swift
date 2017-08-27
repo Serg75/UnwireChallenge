@@ -22,16 +22,20 @@ class ItemTableViewCell: UITableViewCell {
     
     
     private var item: Shirt!
+    private var bagList: BagList!
     
     
     /// Updates outlets by values.
     ///
     /// - Parameters:
     ///   - shirt:   'Shirt' structure with values.
+    ///   - bagList: Bag list object for injection.
     ///   - isInBag: Specifies whether this item in the bag.
-    func setupSell(shirt: Shirt, isInBag: Bool = false) {
+    ///   - shirtQuantity: Available quantity of the shirt.
+    func setupSell(shirt: Shirt, bagList: BagList, isInBag: Bool = false, shirtQuantity: Int = 0) {
         
-        item = shirt
+        self.item = shirt
+        self.bagList = bagList
         
         nameLabel.text = shirt.name
         colourLabel.text = shirt.colour
@@ -39,32 +43,32 @@ class ItemTableViewCell: UITableViewCell {
         priceLabel.text = "€\(shirt.price.description)"
         quantityLabel.text = shirt.quantity.formattedQuantity(markSoldedOut: true)
         
-        DataManager.getImageFrom(link: shirt.picture) { image in
-            self.thumbView.image = image
-        }
-
         if let bagIcon = self.bagIcon {
             bagIcon.isHidden = !isInBag
         }
         
         if let incButton = increaseQuantityButton {
-            incButton.isEnabled = shirt.quantity < ShirtsList.quantityForShirt(shirt)
+            incButton.isEnabled = shirt.quantity < shirtQuantity
         }
         if let decButton = reduceQuantityButton {
             decButton.isEnabled = shirt.quantity > 1
         }
     }
+    
+    func setPicture(_ image: UIImage?) {
+        self.thumbView.image = image
+    }
 
     @IBAction func increaseQuantity(_ sender: Any) {
-        BagItems.increaseQuantity(item: item)
+        bagList.increaseQuantity(item: item)
     }
     
     @IBAction func reduceQuantity(_ sender: Any) {
-        BagItems.reduceQuantity(item: item)
+        bagList.reduceQuantity(item: item)
     }
     
     @IBAction func removeFromBag(_ sender: Any) {
-        BagItems.removeFromBag(item: item)
+        bagList.removeFromBag(item: item)
     }
     
     

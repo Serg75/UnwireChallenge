@@ -56,7 +56,7 @@ extension Shirt {
         self.size = size
         self.picture = picture
         
-        if let quantity = json["quantity"] as? Int {
+        if let quantity = json["quantity"] as? Int, quantity >= 0 {
             self.quantity = quantity
         } else {
             self.quantity = 0
@@ -109,4 +109,20 @@ extension Shirt {
         
         completion(shirts, error)
     }
+    
+    
+    /// Generates data for order.
+    ///
+    /// - Parameters:
+    ///   - items:      Items for order.
+    ///   - totalPrice: Sum of items price in the order.
+    /// - Returns: Formatted data for order.
+    static func orderData(items: [Shirt], totalPrice: Int64) -> [String: Any] {
+        
+        let basket: [String: Any] = ["shirts": items.map { $0.json } ]
+        let order: [String: Any] = ["total": totalPrice,
+                                    "basket": basket];
+        return order
+    }
+
 }
